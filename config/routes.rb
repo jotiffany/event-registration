@@ -2,11 +2,14 @@ Rails.application.routes.draw do
 
   root 'events#index'
 
-  resources :events
-  resources :guests
-  resources :tables do
-    resources :seats
+  resources :events do
+      resources :tables do
+        resources :seats
+      end
   end
+
+  resources :guests
+  resources :tables
   resources :seats
 
   # The priority is based upon order of creation: first created -> highest priority.

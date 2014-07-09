@@ -1,15 +1,18 @@
 %p#notice= notice
 
 %p
+  %b Event:
+  = @table.event.name
+%p
   %b Number:
   = @table.number
 %p
   %b Max seats:
   = @table.max_seats
 %p
-  %b Event:
-  = @table.event
+  %b Seats:
+  = render :partial => 'seats', :locals => { :seats => @table.seats }
 
 = link_to 'Edit', edit_table_path(@table)
 \|
-= link_to 'Back', tables_path
+= link_to 'Back', event_path(@table.event)

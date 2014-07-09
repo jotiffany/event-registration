@@ -1,0 +1,5 @@
+%div.tables-div
+  %ul#table-list
+    - tables.each do |table|
+      %li
+        = link_to table.number, table

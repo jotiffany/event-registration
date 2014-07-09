@@ -6,6 +6,10 @@
 %p
   %b Event date:
   = @event.event_date
+%p
+  %b Tables:
+  = link_to 'Add Table', new_event_table_path(@event)
+  = render :partial => 'tables', :locals => { :tables => @event.tables }
 
 = link_to 'Edit', edit_event_path(@event)
 \|

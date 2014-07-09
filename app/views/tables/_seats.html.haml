@@ -1,0 +1,9 @@
+%div.seats-div
+  %ul#seat-list
+    %table
+      - seats.each_with_index do |seat, index|
+        %tr
+          %td
+            = "Seat #{index+1}"
+          %td
+            = humanize_occupied(seat.occupied)

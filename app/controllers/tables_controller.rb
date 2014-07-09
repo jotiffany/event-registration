@@ -1,5 +1,6 @@
 class TablesController < ApplicationController
   before_action :set_table, only: [:show, :edit, :update, :destroy]
+  include TablesHelper
 
   # GET /tables
   # GET /tables.json
@@ -12,9 +13,10 @@ class TablesController < ApplicationController
   def show
   end
 
-  # GET /tables/new
+  # GET events/event_id/tables/new
   def new
-    @table = Table.new
+    event = Event.find(params[:event_id])
+    @table = Table.new(:event => event)
   end
 
   # GET /tables/1/edit
