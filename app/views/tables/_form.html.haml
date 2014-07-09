@@ -1,5 +1,5 @@
-= simple_form_for @table do |table|
-  = table.input :event_id, :collection => Event.all, :selected => @table.event.id
-  = table.input :number
-  = table.input :max_seats
-  = table.button :submit
+= simple_form_for(@table, :html => {:class => 'form'}) do |f|
+  = f.input :event_id, :collection => Event.all, :selected => @table.event.id
+  = f.input :number
+  = f.input :max_seats
+  = f.button :submit

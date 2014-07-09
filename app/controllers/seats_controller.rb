@@ -14,7 +14,8 @@ class SeatsController < ApplicationController
 
   # GET /seats/new
   def new
-    @seat = Seat.new
+    table = Table.find(params[:table_id])
+    @seat = Seat.new(:table => table)
   end
 
   # GET /seats/1/edit

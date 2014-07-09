@@ -1,4 +1,4 @@
-= simple_form_for(@event, :html => {:class => 'form'}) do |event|
-  = event.input :name
-  = event.input :event_date
-  = event.button :submit, :class => 'btn btn-primary'
+= simple_form_for(@event, :html => {:class => 'form'}) do |form|
+      = form.input :name
+      = form.input :event_date
+      = form.button :submit, :class => 'btn btn-primary'
