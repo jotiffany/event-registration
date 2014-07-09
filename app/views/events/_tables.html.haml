@@ -1,5 +1,7 @@
-%div.tables-div
-  %ul#table-list
-    - tables.each do |table|
-      %li
-        = link_to table.number, table
+%table{ :class => 'table table-striped' }
+  - tables.each do |table|
+    %tr
+      %td
+        = link_to table.number, event_table_path(table.event, table)
+      %td
+        = "#{pluralize(table.max_seats, 'seat')}"

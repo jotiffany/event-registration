@@ -1,0 +1,14 @@
+!!!5
+%html
+%head
+  %title
+    = content_for?(:title) ? yield(:title) : "Event Registration"
+  = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+  = csrf_meta_tags
+%body
+  = render :partial => "/layouts/navbar"
+  .container-fluid
+    .row-fluid
+      .span12
+        = yield
+= javascript_include_tag "application", "data-turbolinks-track" => true

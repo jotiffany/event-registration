@@ -1,18 +1,28 @@
+= content_for :title do
+  Events
+
 %p#notice= notice
 
-%p
-  %b Name:
-  = @event.name
-%p
-  %b Event date:
-  = @event.event_date
-%p
-  %b Tables:
-  = link_to 'Add Table', new_event_table_path(@event)
-  = render :partial => 'tables', :locals => { :tables => @event.tables }
-
-= link_to 'Edit', edit_event_path(@event)
-\|
-= link_to 'Back', events_path
-\|
-= link_to 'Tables', tables_path
+.row
+  .col-md-2
+    %dl
+      %dt Name:
+      %dd
+        = @event.name
+  .col-md-2
+    %dl
+      %dt Event date:
+      %dd
+        = @event.event_date
+.row
+  .col-md-2
+    %h5 Tables:
+  %div{ :class => 'col-md-2 text-right' }
+    = link_to 'Add Table', new_event_table_path(@event), :class => 'btn btn-primary'
+.row
+  .col-md-4
+    = render :partial => 'tables', :locals => { :tables => @event.tables }
+.row
+  %div{:class => 'col-md-4 text-right'}
+    = link_to 'Edit', edit_event_path(@event), :class => 'btn btn-primary'
+    = link_to 'Back', events_path, :class => 'btn btn-default'

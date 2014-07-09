@@ -1,19 +1,22 @@
-%h1 Listing events
+.row
+  .col-md-8
+    %h1 Events
+  %div{ :class => 'col-md-4 text-right' }
+    = link_to 'New Event', new_event_path, :class => 'btn btn-primary'
+.row
+  .col-md-12
+    %table{:class => 'table table-striped'}
+      %tr
+        %th Name
+        %th Event date
+        %th
+        %th
 
-%table
-  %tr
-    %th Name
-    %th Event date
-    %th
-    %th
+      - @events.each do |event|
+        %tr
+          %td= link_to event.name, event
+          %td= event.event_date
+          %td= link_to 'Edit', edit_event_path(event)
+          %td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-  - @events.each do |event|
-    %tr
-      %td= link_to event.name, event
-      %td= event.event_date
-      %td= link_to 'Edit', edit_event_path(event)
-      %td= link_to 'Destroy', event, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
-%br
-
-= link_to 'New Event', new_event_path
