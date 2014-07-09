@@ -1,0 +1,4 @@
+= simple_form_for @seat do |seat|
+  = seat.input :table_id, :collection => Table.all, :label_method => :number
+  = seat.input :occupied
+  = seat.button :submit
