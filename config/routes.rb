@@ -6,9 +6,8 @@ Rails.application.routes.draw do
       resources :tables do
         resources :seats
       end
+      resources :guests
   end
-
-  resources :guests
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
