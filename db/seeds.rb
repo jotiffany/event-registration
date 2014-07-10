@@ -10,13 +10,8 @@ events = Event.create([
     { :name => 'Wedding Reception', :event_date => Date.new(2014, 10, 13)}
 ])
 
-max_seats = 12
-
 ('A'..'Z').each do |letter|
     events.each do |event|
         table = Table.create( :number => letter, :event => event, :max_seats => 12)
-        max_seats.times do
-            Seat.create( :table => table)
-        end
     end
 end
