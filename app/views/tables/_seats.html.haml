@@ -1,7 +1,0 @@
-%table{ :class => 'table table-striped' }
-  - seats.each_with_index do |seat, index|
-    %tr
-      %td
-        = "Seat #{index+1}"
-      %td
-        = humanize_occupied(seat.occupied)
