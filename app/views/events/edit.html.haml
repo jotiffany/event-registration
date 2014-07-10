@@ -1,7 +1,9 @@
-%h1 Editing event
-
-= render 'form'
-
-= link_to 'Show', @event
-\|
-= link_to 'Back', events_path
+= content_for :title do
+  Edit Event #{@event.name}
+.row
+  .col-md-12
+    %h1 Edit Event #{@event.name}
+  .col-md-12
+    = render 'form'
+  .col-md-12
+    = link_to 'Back', @event

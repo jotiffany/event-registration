@@ -2,6 +2,10 @@
   - tables.each do |table|
     %tr
       %td
-        = link_to table.number, event_table_path(table.event, table)
+        = table.number
       %td
         = "#{pluralize(table.max_seats, 'seat')}"
+      %td
+        = link_to 'Edit', edit_event_table_path(table.event, table)
+      %td
+        = link_to 'Destroy', event_table_path(table.event, table), :method => :delete, :data => { :confirm => 'Are you sure?' }

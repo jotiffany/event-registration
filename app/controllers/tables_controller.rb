@@ -30,7 +30,7 @@ class TablesController < ApplicationController
 
     respond_to do |format|
       if @table.save
-        format.html { redirect_to @table, notice: 'Table was successfully created.' }
+        format.html { redirect_to event_table_path(@table.event, @table), notice: 'Table was successfully created.' }
         format.json { render :show, status: :created, location: @table }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class TablesController < ApplicationController
   def update
     respond_to do |format|
       if @table.update(table_params)
-        format.html { redirect_to @table, notice: 'Table was successfully updated.' }
+        format.html { redirect_to event_table_path(@table.event, @table), notice: 'Table was successfully updated.' }
         format.json { render :show, status: :ok, location: @table }
       else
         format.html { render :edit }
@@ -56,9 +56,10 @@ class TablesController < ApplicationController
   # DELETE /tables/1
   # DELETE /tables/1.json
   def destroy
+    event = @table.event
     @table.destroy
     respond_to do |format|
-      format.html { redirect_to tables_url, notice: 'Table was successfully destroyed.' }
+      format.html { redirect_to @event, notice: 'Table was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

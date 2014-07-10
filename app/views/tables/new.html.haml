@@ -1,5 +1,9 @@
-%h1 New table
-
-= render 'form'
-
-= link_to 'Back', event_path(@table.event)
+= content_for :title do
+  Add Table for #{@table.event.name}
+.row
+  .col-md-12
+    %h1 Add Table for #{@table.event.name}
+  .col-md-12
+    = render 'form'
+  .col-md-12
+    = link_to 'Back', event_path(@table.event)

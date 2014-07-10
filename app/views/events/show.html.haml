@@ -1,28 +1,40 @@
 = content_for :title do
   Events
-
-%p#notice= notice
-
 .row
-  .col-md-2
+  .col-md-12.text-right
+    = render :partial => 'show_buttons'
+.row
+  .col-md-12
+    %hr
+.row
+  .col-md-6
     %dl
       %dt Name:
       %dd
         = @event.name
-  .col-md-2
+  .col-md-6
     %dl
       %dt Event date:
       %dd
         = @event.event_date
+
 .row
-  .col-md-2
-    %h5 Tables:
-  %div{ :class => 'col-md-2 text-right' }
-    = link_to 'Add Table', new_event_table_path(@event), :class => 'btn btn-primary'
+  .col-md-12
+    %ul.nav.nav-tabs.nav-justified{:role => "tablist"}
+      %li.active
+        = link_to "Tables", "\#tables", { :role => "tab", :"data-toggle" => "tab"}
+      %li
+        = link_to "Guests", "\#guests", { :role => "tab", :"data-toggle" => "tab"}
+    .tab-content
+      .tab-pane.active#tables
+        .panel.panel-default
+          = render :partial => 'tables', :locals => { :tables => @event.tables }
+      .tab-pane#guests
+        .panel.panel-default
+          = render :partial => 'guests', :locals => { :guests => @event.guests }
 .row
-  .col-md-4
-    = render :partial => 'tables', :locals => { :tables => @event.tables }
+  .col-md-12.text-right
+    = render :partial => 'show_buttons'
 .row
-  %div{:class => 'col-md-4 text-right'}
-    = link_to 'Edit', edit_event_path(@event), :class => 'btn btn-primary'
-    = link_to 'Back', events_path, :class => 'btn btn-default'
+  .col-md-12
+    %hr

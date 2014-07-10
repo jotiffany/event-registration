@@ -1,34 +1,24 @@
 = content_for :title do
   Tables for #{@table.event.name}
 
-%p#notice= notice
-
 .row
-  .col-md-2
+  .col-md-6
     %dl
       %dt Event:
       %dd
         = @table.event.name
-  .col-md-2
+  .col-md-6
     %dl
       %dt Table Number:
       %dd
         = @table.number
 .row
-  .col-md-2
+  .col-md-6
     %dl
       %dt Max Seats:
       %dd
         = @table.max_seats
 .row
-  .col-md-2
-    %h5 Seats:
-  %div{ :class => 'col-md-2 text-right' }
-    = link_to 'Add Seat', new_event_table_seat_path(@table.event, @table), :class => 'btn btn-primary'
-.row
-  .col-md-4
-    = render :partial => 'seats', :locals => { :seats => @table.seats }
-.row
-  %div{:class => 'col-md-4 text-right'}
+  .col-md-12.text-right
     = link_to 'Edit', edit_event_table_path(@table.event, @table), :class => 'btn btn-primary'
     = link_to 'Back', event_path(@table.event), :class => 'btn btn-default'

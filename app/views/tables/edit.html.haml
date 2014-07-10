@@ -1,7 +1,10 @@
-%h1 Editing table
+= content_for :title do
+  Edit Table
 
-= render 'form'
-
-= link_to 'Show', @table
-\|
-= link_to 'Back', tables_path
+.row
+  .col-md-12
+    %h1 Edit Table
+  .col-md-12
+    = render 'form'
+  .col-md-12
+    = link_to 'Back', event_table_path(@table.event, @table)
