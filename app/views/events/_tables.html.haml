@@ -6,6 +6,10 @@
       %td
         = "#{pluralize(table.max_seats, 'seat')}"
       %td
+        = "#{table.unassigned_seats} unassigned"
+      %td
+        = "#{table.occupied_seats} occupied"
+      %td
         = link_to 'Edit', edit_event_table_path(table.event, table)
       %td
         = link_to 'Destroy', event_table_path(table.event, table), :method => :delete, :data => { :confirm => 'Are you sure?' }

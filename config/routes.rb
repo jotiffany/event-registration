@@ -6,7 +6,11 @@ Rails.application.routes.draw do
       resources :tables do
         resources :seats
       end
-      resources :guests
+      resources :guests do
+        member do
+          post 'register'
+        end
+      end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

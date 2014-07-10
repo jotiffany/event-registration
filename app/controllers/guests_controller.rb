@@ -1,5 +1,5 @@
 class GuestsController < ApplicationController
-  before_action :set_guest, only: [:show, :edit, :update, :destroy]
+  before_action :set_guest, only: [:show, :edit, :update, :register, :destroy]
 
   # GET /guests
   # GET /guests.json
@@ -54,6 +54,19 @@ class GuestsController < ApplicationController
     end
   end
 
+  def register
+    respond_to do |format|
+      if @guest.update(:registered => true)
+        @event = @guest.table.event
+        format.html { redirect_to @event, notice: 'Guest was successfully registered.' }
+        format.json { render :show, status: :ok, location: @guest }
+      else
+        format.html { render :edit }
+        format.json { render json: @guest.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # DELETE /guests/1
   # DELETE /guests/1.json
   def destroy
@@ -73,6 +86,6 @@ class GuestsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guest_params
-      params.require(:guest).permit(:name, :table_id, :assigned_seats, :registered)
+      params.require(:guest).permit(:name, :table_id, :assigned_seats)
     end
 end
