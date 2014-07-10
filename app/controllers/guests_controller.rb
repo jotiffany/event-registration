@@ -14,6 +14,7 @@ class GuestsController < ApplicationController
 
   # GET /guests/new
   def new
+    @event = Event.find(params[:event_id])
     @guest = Guest.new
   end
 
@@ -28,7 +29,8 @@ class GuestsController < ApplicationController
 
     respond_to do |format|
       if @guest.save
-        format.html { redirect_to @guest, notice: 'Guest was successfully created.' }
+        @event = @guest.table.event
+        format.html { redirect_to @event, notice: 'Guest was successfully created.' }
         format.json { render :show, status: :created, location: @guest }
       else
         format.html { render :new }
@@ -42,7 +44,8 @@ class GuestsController < ApplicationController
   def update
     respond_to do |format|
       if @guest.update(guest_params)
-        format.html { redirect_to @guest, notice: 'Guest was successfully updated.' }
+        @event = @guest.table.event
+        format.html { redirect_to @event, notice: 'Guest was successfully updated.' }
         format.json { render :show, status: :ok, location: @guest }
       else
         format.html { render :edit }
@@ -64,11 +67,12 @@ class GuestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_guest
+      @event = Event.find(params[:event_id])
       @guest = Guest.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guest_params
-      params.require(:guest).permit(:name)
+      params.require(:guest).permit(:name, :table_id, :assigned_seats, :registered)
     end
 end

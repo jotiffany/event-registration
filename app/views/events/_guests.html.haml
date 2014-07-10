@@ -1,0 +1,15 @@
+%table{ :class => 'table table-striped' }
+  - guests.each do |guest|
+    %tr
+      %td
+        = guest.name
+      %td
+        = guest.table.number
+      %td
+        = "#{pluralize(guest.assigned_seats, 'seat')}"
+      %td
+        = guest.registered ? 'Registered' : 'Unregistered'
+      %td
+        = link_to 'Edit', edit_event_guest_path(guest.table.event, guest)
+      %td
+        = link_to 'Destroy', event_guest_path(guest.table.event, guest), :method => :delete, :data => { :confirm => 'Are you sure?' }

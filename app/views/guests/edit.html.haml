@@ -1,7 +1,10 @@
-%h1 Editing guest
+= content_for :title do
+  Edit Guest
 
-= render 'form'
-
-= link_to 'Show', @guest
-\|
-= link_to 'Back', guests_path
+.row
+  .col-md-12
+    %h1 Edit Guest
+  .col-md-12
+    = render 'form'
+  .col-md-12
+    = link_to 'Back', event_guest_path(@event, @guest)

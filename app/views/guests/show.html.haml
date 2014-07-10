@@ -3,6 +3,15 @@
 %p
   %b Name:
   = @guest.name
+%p
+  %b Table:
+  = @guest.table
+%p
+  %b Assigned seats:
+  = @guest.assigned_seats
+%p
+  %b Registered:
+  = @guest.registered
 
 = link_to 'Edit', edit_guest_path(@guest)
 \|

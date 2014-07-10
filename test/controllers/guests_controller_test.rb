@@ -18,7 +18,7 @@ class GuestsControllerTest < ActionController::TestCase
 
   test "should create guest" do
     assert_difference('Guest.count') do
-      post :create, guest: { name: @guest.name }
+      post :create, guest: { assigned_seats: @guest.assigned_seats, name: @guest.name, registered: @guest.registered, table_id: @guest.table_id }
     end
 
     assert_redirected_to guest_path(assigns(:guest))
@@ -35,7 +35,7 @@ class GuestsControllerTest < ActionController::TestCase
   end
 
   test "should update guest" do
-    patch :update, id: @guest, guest: { name: @guest.name }
+    patch :update, id: @guest, guest: { assigned_seats: @guest.assigned_seats, name: @guest.name, registered: @guest.registered, table_id: @guest.table_id }
     assert_redirected_to guest_path(assigns(:guest))
   end
 

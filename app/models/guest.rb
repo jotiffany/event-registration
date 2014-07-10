@@ -1,4 +1,3 @@
 class Guest < ActiveRecord::Base
-    belongs_to :table
-    has_many :seats
+  belongs_to :table
 end

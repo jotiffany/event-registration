@@ -1,19 +1,24 @@
-%h1 Listing guests
+.row
+  .col-md-8
+    %h1 Guests
+  %div{ :class => 'col-md-4 text-right' }
+    = link_to 'New Guest', new_guest_path, :class => 'btn btn-primary'
+.row
+  .col-md-12
+    %table{:class => 'table table-striped'}
+      %tr
+        %th Name
+        %th Table
+        %th Assigned Seats
+        %th Registered
+        %th
+        %th
 
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @guests.each do |guest|
-    %tr
-      %td= guest.name
-      %td= link_to 'Show', guest
-      %td= link_to 'Edit', edit_guest_path(guest)
-      %td= link_to 'Destroy', guest, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-= link_to 'New Guest', new_guest_path
+      - @guests.each do |guest|
+        %tr
+          %td= link_to guest.name, guest
+          %td= guest.table
+          %td= guest.assigned_seats
+          %td= guest.registered
+          %td= link_to 'Edit', edit_guest_path(guest)
+          %td= link_to 'Destroy', guest, :method => :delete, :data => { :confirm => 'Are you sure?' }

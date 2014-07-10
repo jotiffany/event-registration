@@ -2,6 +2,12 @@
 
 one:
   name: MyString
+  table_id: 
+  assigned_seats: 1
+  registered: false
 
 two:
   name: MyString
+  table_id: 
+  assigned_seats: 1
+  registered: false

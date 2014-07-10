@@ -1,13 +1,5 @@
-= form_for @guest do |f|
-  - if @guest.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@guest.errors.count, "error")} prohibited this guest from being saved:"
-      %ul
-        - @guest.errors.full_messages.each do |msg|
-          %li= msg
-
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit 'Save'
+= simple_form_for([@event, @guest], :html => {:class => 'form'}) do |form|
+    = form.input :name
+    = form.input :table_id, :collection => @event.tables, :label_method => :number
+    = form.input :assigned_seats
+    = form.button :submit, :class => 'btn btn-primary'
