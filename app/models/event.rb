@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
     has_many :guests, :through => :tables
 
     def total_seats
-      Table.select("SUM(tables.max_seats) AS value").where(:event => self).take.value
+      Table.select("SUM(tables.max_seats) AS value").where(:event => self).take.value ||= 0
     end
 
     def total_guests
