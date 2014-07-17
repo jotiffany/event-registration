@@ -1,4 +1,7 @@
 = simple_form_for(@event, :html => {:class => 'form'}) do |form|
-  = form.input :name
-  = form.input :event_date
-  = form.button :submit, :class => 'btn btn-primary'
+  .form-group
+    = form.input :name, :input_html => {:class => 'form-control'}
+  .form-group
+    = form.input :event_date, :as => :string, :input_html => {:class => 'form-control', :'data-behaviour' => 'datepicker'}
+  .form-group
+    = form.button :submit, :class => 'btn btn-primary'

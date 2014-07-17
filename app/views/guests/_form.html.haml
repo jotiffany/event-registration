@@ -1,5 +1,9 @@
 = simple_form_for([@event, @guest], :html => {:class => 'form'}) do |form|
-    = form.input :name
-    = form.input :table_id, :collection => @event.tables, :label_method => :number
-    = form.input :assigned_seats
+  .form-group
+    = form.input :name, :input_html => {:class => 'form-control'}
+  .form-group
+    = form.input :table_id, :collection => @event.tables, :label_method => :number, :input_html => {:class => 'form-control'}
+  .form-group
+    = form.input :assigned_seats, :input_html => {:class => 'form-control'}
+  .form-group
     = form.button :submit, :class => 'btn btn-primary'
