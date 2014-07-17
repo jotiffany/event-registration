@@ -3,7 +3,13 @@ class GuestsController < ApplicationController
   # GET /guests
   # GET /guests.json
   def index
-    @guests = Guest.all
+    if(params.has_key?(:event_id))
+      if(params.has_key?(:query))
+        @guests = Guest.joins(:table).where("tables.event_id = ? AND lower(guests.name) like lower(?)", params[:event_id], "%#{params[:query]}%")
+      else
+        @guests = Guest.joins(:table).where("tables.event_id = ?", params[:event_id])
+      end
+    end
   end
 
   # GET /guests/1

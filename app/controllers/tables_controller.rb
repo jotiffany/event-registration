@@ -30,7 +30,7 @@ class TablesController < ApplicationController
 
     respond_to do |format|
       if @table.save
-        format.html { redirect_to event_table_path(@table.event, @table), notice: 'Table was successfully created.' }
+        format.html { redirect_to @table.event, notice: 'Table was successfully created.' }
         format.json { render :show, status: :created, location: @table }
       else
         format.html { render :new }

@@ -22,8 +22,8 @@ var event_id = $('#guest_event').val();
 var engine = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
   queryTokenizer: Bloodhound.tokenizers.whitespace,
-  prefetch: {
-    url: '/events/' + event_id + '/guests.json',
+  remote: {
+    url: '/events/' + event_id + '/guests.json?query=%QUERY',
     filter: function (guests) {
       return $.map(guests, function (data) {
         return {
@@ -36,7 +36,11 @@ var engine = new Bloodhound({
 engine.initialize();
 
 // instantiate the typeahead UI
-$('#guest_name').typeahead(null, {
+$('#registration-form #guest_name').typeahead(null, {
   displayKey: 'name',
   source: engine.ttAdapter()
+});
+
+$('[data-behaviour~=datepicker]').datepicker({
+  format: 'yyyy-mm-dd'
 });
