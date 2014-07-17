@@ -16,6 +16,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require twitter/typeahead
+//= require bootstrap-datepicker
 
 var event_id = $('#guest_event').val();
 var engine = new Bloodhound({
