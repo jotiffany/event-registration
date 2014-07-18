@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'registration/index'
+
   root 'events#index'
 
   resources :events do
@@ -10,9 +12,15 @@ Rails.application.routes.draw do
         member do
           post 'register'
         end
+        collection do
+          post 'register'
+        end
+      end
+
+      member do
+        get 'registration'
       end
   end
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

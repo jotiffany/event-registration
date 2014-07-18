@@ -4,8 +4,11 @@
   %b Name:
   = @guest.name
 %p
+  %b Event:
+  = @event.name
+%p
   %b Table:
-  = @guest.table
+  = @guest.table.number
 %p
   %b Assigned seats:
   = @guest.assigned_seats
@@ -13,6 +16,6 @@
   %b Registered:
   = @guest.registered
 
-= link_to 'Edit', edit_guest_path(@guest)
+= link_to 'Edit', edit_event_guest_path(@event, @guest)
 \|
-= link_to 'Back', guests_path
+= link_to 'Back', @event

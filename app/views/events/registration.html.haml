@@ -1,0 +1,8 @@
+= content_for :title do
+  Register for @event.name
+.jumbotron
+  %h2.text-primary Welcome to #{@event.name}!
+  = form_tag(register_event_guests_path(@event), :method => :post, :class => "form") do
+    .form-group
+      = text_field_tag :guest_name, nil, :class => "form-control input-lg", :placeholder => "May we have your name, please"
+    = submit_tag "Register", :class => "btn btn-primary btn-block"

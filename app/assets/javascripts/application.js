@@ -13,6 +13,29 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 //= require jquery
 //= require bootstrap-sprockets
+//= require twitter/typeahead
+
+var event_id = $('#guest_event').val();
+var engine = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: {
+    url: '/events/' + event_id + '/guests.json',
+    filter: function (guests) {
+      return $.map(guests, function (data) {
+        return {
+          name: data.name
+        };
+      });
+    }
+  }
+});
+engine.initialize();
+
+// instantiate the typeahead UI
+$('#guest_name').typeahead(null, {
+  displayKey: 'name',
+  source: engine.ttAdapter()
+});

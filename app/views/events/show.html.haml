@@ -17,6 +17,27 @@
       %dt Event date:
       %dd
         = @event.event_date
+.row
+  .col-md-3
+    %dl
+      %dt Total Seats:
+      %dd
+        = @event.total_seats
+  .col-md-3
+    %dl
+      %dt Unassigned Seats:
+      %dd
+        = @event.total_seats - @event.total_guests
+  .col-md-3
+    %dl
+      %dt Total Guests:
+      %dd
+        = @event.total_guests
+  .col-md-3
+    %dl
+      %dt Registered Guests:
+      %dd
+        = @event.registered_guests
 
 .row
   .col-md-12
