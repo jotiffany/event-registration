@@ -1,10 +1,12 @@
 %nav{:class => "navbar navbar-default", :role => "navigation"}
   .container-fluid
-    .navbar-header
-      %button{ :class => "navbar-toggle", :"data-toggle" => "collapse", :"data-target" => "app-navbar-collapse"}
-        %span{ :class => "icon-bar"}
-        %span{ :class => "icon-bar"}
-        %span{ :class => "icon-bar"}
-      = link_to "Event Registration", root_path, :class => 'navbar-brand'
-    .div{:class => 'collapse navbar-collapse', :id => 'app-navbar-collapse'}
-      %ul{:class => 'nav navbar-nav'}
+    .row
+      .col-md-8.col-md-offset-2
+        .navbar-header
+          %button{ :class => "navbar-toggle", :"data-toggle" => "collapse", :"data-target" => "app-navbar-collapse"}
+            %span{ :class => "icon-bar"}
+            %span{ :class => "icon-bar"}
+            %span{ :class => "icon-bar"}
+          = link_to "Event Registration", root_path, :class => 'navbar-brand'
+        .div{:class => 'collapse navbar-collapse', :id => 'app-navbar-collapse'}
+          %ul{:class => 'nav navbar-nav'}
